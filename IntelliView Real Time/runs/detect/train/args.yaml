@@ -1,0 +1,105 @@
+task: detect
+mode: train
+model: yolov11n.pt  # Assuming this is a YOLO model variant; ensure it's appropriate for the dataset size
+data: C:/Users/savit/Downloads/CS 231N Project.v2i.yolov11/data.yaml
+epochs: 10           # Increased from 5 to 50 for thorough training
+patience: 15         # Early stopping with shorter patience for faster convergence
+batch: 16            # Adjust based on GPU memory; increase if memory allows
+imgsz: 800           # Increased resolution for improved small object detection
+save: true
+save_period: 5       # Save model every 5 epochs for intermediate evaluation
+cache: true          # Cache images for faster training
+device: 0
+workers: 8
+project: runs/detect
+name: gun_detection  # Custom name for clarity
+exist_ok: false
+pretrained: true
+optimizer: SGD       # Switch to SGD with momentum for stable training
+verbose: true
+seed: 42             # Use a common seed for reproducibility
+deterministic: true
+single_cls: false
+rect: false
+cos_lr: true         # Cosine learning rate schedule for smooth convergence
+close_mosaic: 5      # Close mosaic earlier for more regular samples
+resume: false
+amp: true
+fraction: 1.0
+profile: false
+multi_scale: true    # Enable multi-scale training for improved generalization
+overlap_mask: true
+mask_ratio: 4
+dropout: 0.2         # Add dropout for better generalization on test data
+val: true
+split: val
+save_json: true      # Save JSON results for evaluation
+save_hybrid: false
+conf: 0.5            # Set a moderate confidence threshold
+iou: 0.5             # Moderate IoU threshold for validation
+max_det: 100         # Lower max detections to avoid excessive results
+half: true           # Use FP16 for faster computation, if supported
+dnn: false
+plots: true
+source: null
+vid_stride: 1
+stream_buffer: false
+visualize: false
+augment: true        # Enable data augmentation for diversity in training
+agnostic_nms: true   # Class-agnostic NMS for cases with similar objects
+classes: null
+retina_masks: true   # High-resolution masks for better mask predictions
+embed: null
+show: false
+save_frames: false
+save_txt: true       # Save results in text format for external analysis
+save_conf: true      # Save confidence scores with detections
+save_crop: true      # Save cropped detections to monitor training progress
+show_labels: true
+show_conf: true
+show_boxes: true
+line_width: 2
+format: torchscript
+keras: false
+optimize: false
+int8: false
+dynamic: true        # Enable dynamic shapes for better adaptation
+simplify: true
+opset: 12
+workspace: 8
+nms: true            # Enable NMS
+lr0: 0.01            # Initial learning rate
+lrf: 0.2             # Higher final LR to allow better exploration
+momentum: 0.937
+weight_decay: 0.0001 # Lower weight decay for minor adjustments
+warmup_epochs: 2.0   # Slightly shorter warmup
+warmup_momentum: 0.9 # Higher warmup momentum for stability
+warmup_bias_lr: 0.2  # Higher initial LR for bias to aid in convergence
+box: 0.05
+cls: 0.5
+dfl: 1.5
+pose: 10.0
+kobj: 1.0
+label_smoothing: 0.1 # Slight smoothing to reduce overconfidence
+nbs: 64
+hsv_h: 0.015
+hsv_s: 0.7
+hsv_v: 0.4
+degrees: 0.0
+translate: 0.1
+scale: 0.5
+shear: 0.0
+perspective: 0.0
+flipud: 0.0
+fliplr: 0.5
+bgr: 0.0
+mosaic: 1.0
+mixup: 0.2          # Add mixup for training stability
+copy_paste: 0.1     # Add slight copy-paste augmentation
+copy_paste_mode: flip
+auto_augment: randaugment # Random augmentations for robustness
+erasing: 0.4
+crop_fraction: 1.0
+cfg: null
+tracker: botsort.yaml
+save_dir: runs\detect\gun_detection

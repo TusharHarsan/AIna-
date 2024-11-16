@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 1
+names: ['gun']
+
+roboflow:
+  workspace: dana-q9plh
+  project: cs-231n-project
+  version: 2
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/dana-q9plh/cs-231n-project/dataset/2
